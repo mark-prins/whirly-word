@@ -1,5 +1,5 @@
 {
   "appId": "com.doofus.whirlyword",
   "appName": "WhirlyWord",
-  "webDir": "."
+  "webDir": "src"
 }
