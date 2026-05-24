@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2a1c08">
+  <title>Whirlyword</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Whirlyword</h1>
+    <div class="header-right">
+      <span class="score" id="progress">0 / 0</span>
+      <button class="btn-new" id="new-btn">Next puzzle</button>
+    </div>
+  </header>
+
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progress-fill"></div>
+    <div class="progress-threshold" id="progress-threshold"></div>
+  </div>
+
+  <main id="words-panel"></main>
+
+  <div class="panel">
+    <div class="input-row" id="input-row"></div>
+    <div class="wheel-wrap">
+      <div class="wheel" id="wheel"></div>
+      <button class="wheel-enter" id="submit-btn">Enter</button>
+    </div>
+    <div class="controls">
+      <button id="clear-btn">Clear</button>
+      <button id="whirl-btn">Whirl</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="words.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
