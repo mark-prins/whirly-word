@@ -1,4 +1,9 @@
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
 
 :root {
   --bg: #e4d9c0;
@@ -54,11 +59,14 @@
   }
 }
 
-html, body { height: 100%; }
+html,
+body {
+  height: 100%;
+}
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.4;
   display: flex;
@@ -72,7 +80,7 @@ body {
 /* ── Header ── */
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 10px 16px;
   padding-top: max(10px, env(safe-area-inset-top));
@@ -87,7 +95,11 @@ header h1 {
   color: var(--accent);
   text-transform: uppercase;
 }
-.header-right { display: flex; align-items: center; gap: 10px; }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .score {
   font-size: 14px;
   font-weight: 600;
@@ -105,7 +117,9 @@ header h1 {
   cursor: pointer;
   font-family: inherit;
 }
-.btn-new:active { background: var(--bg); }
+.btn-new:active {
+  background: var(--bg);
+}
 
 /* ── Progress bar ── */
 .progress-wrap {
@@ -129,7 +143,7 @@ header h1 {
   background: white;
   transform: translateX(-50%);
   border-radius: 2px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.45);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
   transition: left 0.5s ease;
   pointer-events: none;
 }
@@ -141,49 +155,40 @@ header h1 {
 /* ── Word list ── */
 main {
   flex: 1 1 auto;
-  overflow-y: auto;
+  overflow: hidden;
   padding: 14px 16px;
-  -webkit-overflow-scrolling: touch;
-}
-.group { margin-bottom: 18px; }
-.group h2 {
-  font-size: 10px;
-  letter-spacing: 1.4px;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin-bottom: 8px;
-  font-weight: 700;
+  display: flex;
+  flex-direction: column;
 }
 .slots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 14px;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+  column-count: 4;
+  column-fill: auto;
+  column-gap: 24px;
 }
 .slot {
+  break-inside: avoid;
   display: flex;
-  gap: 3px;
-}
-.slot .ch {
-  display: inline-flex;
-  width: 17px;
-  height: 21px;
+  gap: 4px;
   align-items: center;
-  justify-content: center;
-  border: 1.5px solid var(--line);
-  border-radius: 3px;
-  font-family: ui-monospace, "SF Mono", Menlo, monospace;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0;
-  color: transparent;
-  background: var(--surface);
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  margin-bottom: 10px;
 }
-.slot.found .ch {
-  background: var(--found);
-  border-color: var(--found);
-  color: var(--found-text);
-  text-transform: lowercase;
+.slot.found {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--muted);
+  opacity: 0.38;
+  flex-shrink: 0;
 }
 
 /* ── Bottom panel ── */
@@ -220,10 +225,12 @@ main {
   text-transform: uppercase;
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
   transition: transform 0.1s ease;
 }
-.input-letter:active { transform: scale(0.92); }
+.input-letter:active {
+  transform: scale(0.92);
+}
 .input-placeholder {
   color: var(--muted);
   font-size: 13px;
@@ -253,7 +260,7 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .wheel {
   position: absolute;
@@ -275,11 +282,13 @@ main {
   text-transform: uppercase;
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.12s ease, opacity 0.18s ease, left 0.3s ease, top 0.3s ease;
   transform: translate(-50%, -50%);
 }
-.wheel-letter:active { transform: translate(-50%, -50%) scale(0.9); }
+.wheel-letter:active {
+  transform: translate(-50%, -50%) scale(0.9);
+}
 .wheel-letter.used {
   background: var(--tile-used-bg);
   border-bottom-color: var(--tile-used-edge);
@@ -308,7 +317,7 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -54%);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
   transition: transform 0.1s ease, filter 0.1s ease;
   z-index: 2;
 }
@@ -360,16 +369,34 @@ main {
   z-index: 100;
   letter-spacing: 0.3px;
 }
-.toast.show { opacity: 0.93; }
-.toast.error { background: var(--error); color: white; }
+.toast.show {
+  opacity: 0.93;
+}
+.toast.error {
+  background: var(--error);
+  color: white;
+}
 
-.shake { animation: shake 0.32s ease; }
+.shake {
+  animation: shake 0.32s ease;
+}
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-6px); }
-  40% { transform: translateX(6px); }
-  60% { transform: translateX(-3px); }
-  80% { transform: translateX(3px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
 }
 
 .done {
@@ -382,9 +409,17 @@ main {
 
 /* Whirl spin animation */
 @keyframes spin-out {
-  0%   { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-  40%  { transform: translate(-50%, -50%) rotate(180deg) scale(0.7); opacity: 0.4; }
-  100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); opacity: 1; }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  40% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(0.7);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+    opacity: 1;
+  }
 }
 .wheel-letter.whirling {
   animation: spin-out 0.38s ease both;

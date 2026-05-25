@@ -205,36 +205,24 @@
     }
 
     els.panel.innerHTML = '';
-    const groups = {};
+    const slots = document.createElement('div');
+    slots.className = 'slots';
     state.validWords.forEach(w => {
-      if (!groups[w.length]) groups[w.length] = [];
-      groups[w.length].push(w);
-    });
-    Object.keys(groups).sort((a, b) => a - b).forEach(len => {
-      const words = groups[len];
-      const foundCount = words.filter(w => state.found.has(w)).length;
-      const groupEl = document.createElement('div');
-      groupEl.className = 'group';
-      const h2 = document.createElement('h2');
-      h2.textContent = len + ' letters · ' + foundCount + ' / ' + words.length;
-      groupEl.appendChild(h2);
-      const slots = document.createElement('div');
-      slots.className = 'slots';
-      words.forEach(w => {
-        const slot = document.createElement('div');
-        const isFound = state.found.has(w);
-        slot.className = 'slot' + (isFound ? ' found' : '');
+      const slot = document.createElement('div');
+      const isFound = state.found.has(w);
+      slot.className = 'slot' + (isFound ? ' found' : '');
+      if (isFound) {
+        slot.textContent = w;
+      } else {
         for (let i = 0; i < w.length; i++) {
-          const ch = document.createElement('span');
-          ch.className = 'ch';
-          ch.textContent = isFound ? w[i] : '';
-          slot.appendChild(ch);
+          const dot = document.createElement('span');
+          dot.className = 'dot';
+          slot.appendChild(dot);
         }
-        slots.appendChild(slot);
-      });
-      groupEl.appendChild(slots);
-      els.panel.appendChild(groupEl);
+      }
+      slots.appendChild(slot);
     });
+    els.panel.appendChild(slots);
 
     els.progress.textContent = state.found.size + ' / ' + state.validWords.length;
     saveState();
