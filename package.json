@@ -1,4 +1,10 @@
 {
+  "scripts": {
+    "apply-config": "npx cap copy",
+    "build:debug": "yarn apply-config && ./gradlew assembleDebug",
+    "build:release": "yarn apply-config && ./gradlew assembleRelease",
+    "start": "yarn apply-config && npx cap run android"
+  },
   "devDependencies": {
     "@capacitor/android": "^8.3.4",
     "@capacitor/assets": "^3.0.5",
