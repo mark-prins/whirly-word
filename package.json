@@ -1,8 +1,8 @@
 {
   "scripts": {
     "apply-config": "npx cap copy",
-    "build:debug": "yarn apply-config && ./gradlew assembleDebug",
-    "build:release": "yarn apply-config && ./gradlew assembleRelease",
+    "build:debug": "yarn apply-config && cd ./android && ./gradlew assembleDebug && cd ..",
+    "build:release": "yarn apply-config && cd ./android && ./gradlew assembleRelease && cd ..",
     "start": "yarn apply-config && npx cap run android --livereload --external",
     "debug": "python3 -m http.server 8080 --directory src"
   },
