@@ -3,7 +3,8 @@
     "apply-config": "npx cap copy",
     "build:debug": "yarn apply-config && ./gradlew assembleDebug",
     "build:release": "yarn apply-config && ./gradlew assembleRelease",
-    "start": "yarn apply-config && npx cap run android"
+    "start": "yarn apply-config && npx cap run android --livereload --external",
+    "debug": "python3 -m http.server 8080 --directory src"
   },
   "devDependencies": {
     "@capacitor/android": "^8.3.4",

@@ -174,6 +174,7 @@ main {
   gap: 4px;
   align-items: center;
   margin-bottom: 10px;
+  height: 16.8px;
 }
 .slot.found {
   font-size: 12px;
@@ -189,6 +190,81 @@ main {
   background: var(--muted);
   opacity: 0.38;
   flex-shrink: 0;
+}
+.slot.revealed {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.5;
+}
+
+/* ── Modal ── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+.modal-backdrop[hidden] { display: none; }
+.modal {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 24px 20px 18px;
+  margin: 0 24px;
+  max-width: 320px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+.modal p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.modal-buttons button {
+  padding: 8px 22px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+}
+#modal-yes {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ── Star burst ── */
+.star-burst {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 150;
+}
+.star {
+  position: absolute;
+  color: var(--tile);
+  animation: star-pop ease-out both;
+  transform-origin: center;
+  line-height: 1;
+}
+@keyframes star-pop {
+  0%   { transform: scale(0); opacity: 1; }
+  55%  { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.6); opacity: 0; }
 }
 
 /* ── Bottom panel ── */
